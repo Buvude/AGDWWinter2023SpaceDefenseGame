@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     private int maxNumOfEnemies;
     private int numOfEnemiesLeft;
     private int numOfEnemies;
+    public GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
