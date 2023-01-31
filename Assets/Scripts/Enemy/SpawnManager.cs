@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     private int maxNumOfEnemies;
     private int numOfEnemiesLeft;
-    private int numOfEnemies;
+    private int numOfEnemies = 5;
     public GameObject enemy;
     public int enemyCount;
     private float spawnRange = 9;
@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemyWave(waveNumber);
+        SpawnEnemyWave(numOfEnemies + waveNumber);
     }
     //This will probably need to change to specific spawn points once we have the map implimented, but good start
     private Vector3 GenerateSpawnPosition()
@@ -32,7 +32,7 @@ public class SpawnManager : MonoBehaviour
         if (enemyCount == 0)
         {
             waveNumber++;
-            SpawnEnemyWave(waveNumber);
+            SpawnEnemyWave(numOfEnemies + waveNumber);
         }
     }
     void SpawnEnemyWave(int enemiesToSpawn)
