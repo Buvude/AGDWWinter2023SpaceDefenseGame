@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     {
         SpawnEnemyWave(waveNumber);
     }
-
+    //This will probably need to change to specific spawn points once we have the map implimented, but good start
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
