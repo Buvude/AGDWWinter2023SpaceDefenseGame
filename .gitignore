@@ -61,3 +61,4 @@ crashlytics-build.properties
 *.asset
 *.json
 *.dwlt
+UserSettings/EditorUserSettings.asset
