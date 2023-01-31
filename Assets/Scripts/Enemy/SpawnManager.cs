@@ -43,7 +43,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Instantiate(enemy, whereToSpawn, enemy.transform.rotation);
+            Instantiate(enemy, whereToSpawn, Quaternion.identity);
         }
     }
 }
