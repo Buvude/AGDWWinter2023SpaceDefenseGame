@@ -17,8 +17,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        whereToSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
         SpawnEnemyWave(numOfEnemies + waveNumber);
-        Vector3 whereToSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
     }
     //This will probably need to change to specific spawn points once we have the map implimented, but good start
     private Vector3 GenerateSpawnPosition()
