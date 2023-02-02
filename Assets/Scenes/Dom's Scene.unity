@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {fileID: 1260148834}
-  - {fileID: 1897956040}
+  - {fileID: 1260148833}
+  - {fileID: 1897956039}
   enemy: {fileID: 3560461428540477023, guid: f6fb83726e65dd74ca807d98187596fe, type: 3}
   enemyCount: 0
   waveNumber: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private int maxNumOfEnemies;
-    public Transform[] spawnPoints;
+    public GameObject[] spawnPoints;
     private int numOfEnemiesLeft;
     private int numOfEnemies = 5;
     public GameObject enemy;
@@ -32,6 +32,12 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(SpawnNewEnemy());
+    }
+
+    IEnumerator SpawnNewEnemy()
+    {
+        yield return new WaitForSeconds(5);
         enemyCount = FindObjectsOfType<Enemy>().Length;
         if (enemyCount == 0)
         {
@@ -39,6 +45,7 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemyWave(numOfEnemies + waveNumber);
         }
     }
+
     void SpawnEnemyWave(int enemiesToSpawn)
     {
         for (int i = 0; i < enemiesToSpawn; i++)
