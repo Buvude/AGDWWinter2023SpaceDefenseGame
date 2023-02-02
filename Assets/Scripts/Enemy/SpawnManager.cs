@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private int maxNumOfEnemies;
-    public GameObject[] spawnPoints;
+    public Transform[] spawnPoints;
     private int numOfEnemiesLeft;
     private int numOfEnemies = 5;
     public GameObject enemy;
@@ -43,6 +43,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
+            int randomSpawn = Mathf.RoundToInt(Random.Range(0f, spawnPoints.Length - 1));
             Instantiate(enemy, whereToSpawn, Quaternion.identity);
         }
     }
