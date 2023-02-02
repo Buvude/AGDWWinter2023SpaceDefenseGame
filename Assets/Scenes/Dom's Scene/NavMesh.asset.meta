@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scenes/MaddieScene.unity.meta
 guid: 6c0b543a4de744c44b77cc48ccf222a9
-DefaultImporter:
-========
-guid: efcc9eee77e6b024b932bb2c4d4aaa92
 NativeFormatImporter:
->>>>>>>> main:Assets/Scenes/Dom's Scene/NavMesh.asset.meta
   externalObjects: {}
+  mainObjectFileID: 23800000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
