@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyGoalPoin : MonoBehaviour
 {
+    public List<EnemyGoalPoin> EGP = new List<EnemyGoalPoin>();
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +16,10 @@ public class EnemyGoalPoin : MonoBehaviour
     {
         
     }
+    public Transform NextPoint()
+    {
+        return EGP[((int)Random.Range(0f, EGP.Count - 1))].gameObject.transform;
+    }
+
+    //add trigger area to trigger searching mode, and then set this EGP as their home.
 }

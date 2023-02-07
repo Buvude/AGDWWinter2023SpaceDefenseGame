@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestingNavMeshGoal : MonoBehaviour
 {
+    public List<TestingNavMeshGoal> TNMG=new List<TestingNavMeshGoal>();
     
     // Start is called before the first frame update
     void Start()
