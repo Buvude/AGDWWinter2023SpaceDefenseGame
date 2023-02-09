@@ -9,6 +9,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public float speed;
     public float speedMultiplier;
+    public float smoothing = 0.9f;
 
     Vector3 moveDirection;
 
@@ -46,7 +47,7 @@ public class PlayerMovementScript : MonoBehaviour
 
             playerRB.velocity = new Vector3(tempPlayerx, playerRB.velocity.y, tempPlayerz);
 
-            playerRB.velocity = playerRB.velocity * 0.9f;
+            playerRB.velocity = playerRB.velocity * smoothing;
         }
 
         if (playerRB.velocity.magnitude > speed)
