@@ -13,7 +13,8 @@ public class SpawnManager : MonoBehaviour
     public int enemyCount;
     private float spawnRange = 9;
     public int waveNumber = 1;
-
+    private int randomChoice;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -37,20 +38,21 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnNewEnemy()
     {
-        yield return new WaitForSeconds(5);
         enemyCount = FindObjectsOfType<Enemy>().Length;
         if (enemyCount == 0)
         {
             waveNumber++;
             SpawnEnemyWave(numOfEnemies + waveNumber);
         }
+        yield return new WaitForSeconds(5);
     }
 
     void SpawnEnemyWave(int enemiesToSpawn)
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            int randomSpawn = Mathf.RoundToInt(Random.Range(0f, spawnPoints.Length - 1));
+            randomChoice = Random.Range(0, spawnPoints.Length);
+            whereToSpawn = spawnPoints[randomChoice].transform.position;
             Instantiate(enemy, whereToSpawn, Quaternion.identity);
         }
     }
