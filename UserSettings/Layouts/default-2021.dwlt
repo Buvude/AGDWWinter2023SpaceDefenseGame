@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 527
+  controlID: 84
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 113
+  controlID: 90
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 526
+  controlID: 83
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 57
+  controlID: 103
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -588,21 +588,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Enemy
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\David Eisenberg\Documents\GitHub\AGDWWinter2023SpaceDefenseGame
+  m_LastProjectPath: C:\Users\cpannuto\Documents\GitHub\AGDWWinter2023SpaceDefenseGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 404a0000
     m_LastClickedID: 19008
-    m_ExpandedIDs: 00000000ac5d0000ae5d0000b05d0000b25d0000b45d0000b65d0000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -630,21 +630,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000ac5d0000ae5d0000b05d0000b25d0000b45d0000b65d0000dc5d0000
+    m_ExpandedIDs: ffffffff00000000768a00009c8a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Enemy Goal Poin
-      m_OriginalName: Enemy Goal Poin
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 6010
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 14}
     m_SearchString: 
@@ -745,7 +745,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
       y: 21
       width: 1073
       height: 453
-    m_Scale: {x: 0.41944444, y: 0.41944444}
+    m_Scale: {x: 0.43888885, y: 0.43888885}
     m_Translation: {x: 536.5, y: 226.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -766,12 +766,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1279.0729
-      y: -540
-      width: 2558.1458
-      height: 1080
+      x: -1222.4052
+      y: -516.076
+      width: 2444.8103
+      height: 1032.152
     m_MinimalGUI: 1
-  m_defaultScale: 0.41944444
+  m_defaultScale: 0.43888888
   m_LastWindowPixelSize: {x: 1073, y: 474}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -1003,9 +1003,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 12.000459, y: 33.520695, z: -29.352705}
+    m_Target: {x: 11.238532, y: 33.914593, z: -28.891}
     speed: 2
-    m_Value: {x: 12.000459, y: 33.520695, z: -29.352705}
+    m_Value: {x: 11.238532, y: 33.914593, z: -28.891}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1052,9 +1052,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.5062853, y: -0.13919719, z: 0.083189584, w: -0.8468825}
+    m_Target: {x: -0.35251072, y: 0.16493478, z: -0.06328095, w: -0.9188904}
     speed: 2
-    m_Value: {x: -0.50632805, y: -0.13920893, z: 0.0831966, w: -0.846954}
+    m_Value: {x: -0.35244513, y: 0.16632695, z: -0.06381502, w: -0.9187194}
   m_Size:
     m_Target: 0.9291073
     speed: 2
@@ -1116,7 +1116,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1eefffff30fbffff
+      m_ExpandedIDs: 18c9ffff5cc9ffffa0c9ffffe4c9ffff40caffff90ccffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
