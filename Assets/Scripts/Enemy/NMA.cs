@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class NMA : MonoBehaviour
 {
-    public int NMAspeed;
+    public float NMAspeed;
     public EnemyGoalPoin CurrentHome;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave
     public enum EnemyState { Searching, Patrolling, Chasing, Attacking, Dead}; //depending on the state the enemy is in, it will act differently
     private Vector3 CurrentTarget; 
@@ -14,9 +14,9 @@ public class NMA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         agent.speed = NMAspeed;
         //TEMPORARY TEST FOR NAVMESH
-        agent = GetComponent<NavMeshAgent>();
         //make it so the spawn point is instatnly a "home" so that they don't search when spawned in
 
         /*CurrentTarget.Set(0f, 0f, 0f);*/
