@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private int maxNumOfEnemies;
-    public GameObject[] spawnPoints;
+    public SpawnPoint[] spawnPoints;
     private int numOfEnemiesLeft;
     private int numOfEnemies = 5;
     public GameObject enemy;

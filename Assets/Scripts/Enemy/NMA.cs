@@ -20,7 +20,7 @@ public class NMA : MonoBehaviour
         //make it so the spawn point is instatnly a "home" so that they don't search when spawned in
 
         /*CurrentTarget.Set(0f, 0f, 0f);*/
-        UpdateTarget();//putting this as a method so it can be called whenever, but not constantly every frame. This might optimize the game a bit more
+        /*UpdateTarget();*///putting this as a method so it can be called whenever, but not constantly every frame. This might optimize the game a bit more
     }
 
     // Update is called once per frame
@@ -31,6 +31,12 @@ public class NMA : MonoBehaviour
     public void UpdateTarget()
     {
         agent.destination = CurrentTarget;
+    }
+    public void UpdateTargetWithTarget(Vector3 NextTargetPossibly)
+    {
+        /*agent.destination = newPoint;*/
+        CurrentTarget = NextTargetPossibly;
+        UpdateTarget();
     }
     public void NewHome(EnemyGoalPoin EGP2)
     {

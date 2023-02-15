@@ -28,5 +28,13 @@ public class EnemyGoalPoin : MonoBehaviour
             collision.gameObject.GetComponent<NMA>().NewHome(this);
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<NMA>().NewHome(this);
+        }
+    }
     //add trigger area to trigger searching mode, and then set this EGP as their home.
 }
