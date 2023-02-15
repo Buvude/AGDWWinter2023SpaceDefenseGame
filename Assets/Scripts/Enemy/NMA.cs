@@ -34,6 +34,7 @@ public class NMA : MonoBehaviour
     }
     public void UpdateTargetWithTarget(Vector3 NextTargetPossibly)
     {
+        
         /*agent.destination = newPoint;*/
         CurrentTarget = NextTargetPossibly;
         UpdateTarget();
