@@ -5,17 +5,17 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private int health;
+    public int health;
     public TextMeshProUGUI healthText;
-    private int ammo;
-    public TextMeshProUGUI ammoText;
+    public int oxygen;
+    public TextMeshProUGUI oxygenText;
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
         healthText.text = "Health: " + health + "%";
-        ammo = 6;
-        ammoText.text = "Ammo: " + ammo;
+        oxygen = 100;
+        oxygenText.text = "O2: " + oxygen + "%";
     }
 
     // Update is called once per frame
