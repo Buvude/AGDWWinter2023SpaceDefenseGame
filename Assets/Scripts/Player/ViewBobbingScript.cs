@@ -38,7 +38,7 @@ public class ViewBobbingScript : MonoBehaviour
     {
         float speed = new Vector3(playerRB.velocity.x, playerRB.velocity.y, playerRB.velocity.z).magnitude;
 
-        if (speed >= 0.5 && playerScript.grounded)
+        if (speed >= 0.5 && playerScript.grounded || speed >= 0.5 && playerScript.groundedslope)
         {
             camera.localPosition = Vector3.Lerp(camera.localPosition, FootStep(), 1 * Time.deltaTime);
         }else
