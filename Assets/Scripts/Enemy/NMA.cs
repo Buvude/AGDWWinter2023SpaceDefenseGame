@@ -56,6 +56,7 @@ public class NMA : MonoBehaviour
     }
     public void postAnimation()
     {
+        Debug.Log("got to post animation");
         CurrentState = EnemyState.Patrolling;
         StateSwitch();
     }
