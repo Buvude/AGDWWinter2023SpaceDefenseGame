@@ -12,9 +12,17 @@ public class PlayerMovementScript : MonoBehaviour
     public float smoothing = 0.9f;
 
     Vector3 moveDirection;
+    Vector3 slopeMoveDir;
 
     public float tempPlayerx;
     public float tempPlayerz;
+
+    public bool grounded;
+    public bool groundedslope;
+    public LayerMask groundMask;
+
+    RaycastHit slopeHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +35,48 @@ public class PlayerMovementScript : MonoBehaviour
         
     }
 
+    private bool SlopeCheck()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 2))
+        {
+            if (slopeHit.normal != Vector3.up)
+            {
+                groundedslope = true;
+                return true;
+            }else
+            {
+                groundedslope = false;
+                return false;
+            }
+        }
+        groundedslope = false;
+        return false;
+    }
+
     void FixedUpdate()
     {
+
+        SlopeCheck();
+
+        grounded = Physics.CheckSphere(transform.position - new Vector3(0, 1, 0), 0.4f, groundMask);
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         float y = playerRB.velocity.y;
 
+        slopeMoveDir = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
+
         moveDirection = transform.forward * vertical + transform.right * horizontal;
 
-        playerRB.AddForce(moveDirection.normalized * speed * speedMultiplier * Time.deltaTime, ForceMode.Impulse);
+        if (grounded)
+        {
+            playerRB.AddForce(moveDirection.normalized * speed * speedMultiplier * Time.deltaTime, ForceMode.Impulse);
+        }else if (grounded && SlopeCheck())
+        {
+            playerRB.AddForce(slopeMoveDir.normalized * speed * speedMultiplier * Time.deltaTime, ForceMode.Impulse);
+        }
+        
 
         if (Input.GetAxisRaw("Horizontal") == 0f && Input.GetAxisRaw("Vertical") == 0f)
         {
