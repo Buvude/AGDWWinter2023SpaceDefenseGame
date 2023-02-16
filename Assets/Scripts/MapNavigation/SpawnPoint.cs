@@ -21,17 +21,17 @@ public class SpawnPoint : EnemyGoalPoin
     }*/
     public Transform FirstPoint()
     {
-        return EGP[((int)Random.Range(0f, EGP.Count - 1))].gameObject.transform;
+        return EGP[((int)Random.Range(0f, EGP.Count ))].gameObject.transform;
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         print("Collision entered");
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<NMA>().NewHome(this);//setting the home to the spawn (so they don't get caught in an endless loop)
-            collision.gameObject.GetComponent<NMA>().UpdateTargetWithTarget(NextPoint().position);
+            collision.gameObject.GetComponent<NMA>().UpdateTargetWthEGP(NextPoint().position);
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -39,7 +39,12 @@ public class SpawnPoint : EnemyGoalPoin
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<NMA>().NewHome(this);//setting the home to the spawn (so they don't get caught in an endless loop)
-            collision.gameObject.GetComponent<NMA>().UpdateTargetWithTarget(FirstPoint().position);
+            collision.gameObject.GetComponent<NMA>().CurrentState = NMA.EnemyState.Patrolling;
+            collision.gameObject.GetComponent<NMA>().StateSwitch();
+            collision.gameObject.GetComponent<NMA>().nextTarget = FirstPoint().gameObject.GetComponent<EnemyGoalPoin>();
+            collision.gameObject.GetComponent<NMA>().UpdateTarget();
+
+
         }
     }
 }

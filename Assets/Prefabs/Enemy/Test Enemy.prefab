@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5896782968322408425}
   - component: {fileID: 7505995008389508016}
   - component: {fileID: -7084126526518717077}
+  - component: {fileID: 135694033332249867}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Enemy
@@ -147,9 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadc1ccab01fb4f41972a2e556dc9dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ani: {fileID: 135694033332249867}
   NMAspeed: 3.5
   CurrentHome: {fileID: 0}
-  CurrentState: 0
+  nextTarget: {fileID: 0}
+  CurrentState: 1
 --- !u!54 &-7084126526518717077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,3 +169,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &135694033332249867
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560461428540477023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f0891e0c5164f947ae2fabff5f35e4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -5,17 +5,22 @@ using UnityEngine.AI;
 
 public class NMA : MonoBehaviour
 {
+    public Animator ani;
     public float NMAspeed;
-    public EnemyGoalPoin CurrentHome;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave
-    public enum EnemyState { Searching, Patrolling, Chasing, Attacking, Dead}; //depending on the state the enemy is in, it will act differently
+    public EnemyGoalPoin CurrentHome, nextTarget;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave
+    public enum EnemyState { Searching, Paused, Patrolling, Chasing, Attacking, Dead}; //depending on the state the enemy is in, it will act differently
     private Vector3 CurrentTarget; 
     private NavMeshAgent agent;
     public EnemyState CurrentState;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = this.gameObject.GetComponent<NavMeshAgent>();
         agent.speed = NMAspeed;
+        CurrentTarget = new Vector3();
+    }
+    void Start()
+    { 
         //TEMPORARY TEST FOR NAVMESH
         //make it so the spawn point is instatnly a "home" so that they don't search when spawned in
 
@@ -30,30 +35,39 @@ public class NMA : MonoBehaviour
     }
     public void UpdateTarget()
     {
+        CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
         agent.destination = CurrentTarget;
     }
-    public void UpdateTargetWithTarget(Vector3 NextTargetPossibly)
+   /* public void UpdateTargetWthEGP()
     {
-        
-        /*agent.destination = newPoint;*/
-        CurrentTarget = NextTargetPossibly;
+        CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
         UpdateTarget();
-    }
+        *//*agent.destination = newPoint;*//*
+        CurrentTarget = NextTargetPossibly;
+        UpdateTarget();*//*
+    }*/
     public void NewHome(EnemyGoalPoin EGP2)
     {
         CurrentHome = EGP2;
-        CurrentState = EnemyState.Searching;
+        /*CurrentState = EnemyState.Searching;*/
+        /*StateSwitch();*/
         
         //play animation then switch state to patrolling (after choosing new path)
     }
-
-    public void StateSwitch()
+    public void postAnimation()
+    {
+        CurrentState = EnemyState.Patrolling;
+        StateSwitch();
+    }
+    public void StateSwitch()//paused is an inbetween so stuff doesn't keep getting updated
     {
         switch (CurrentState)
         {
             case EnemyState.Searching:
                 {
                     agent.speed = 0;
+                    CurrentState = EnemyState.Paused;
+                    ani.SetTrigger("SearchingTime");
                     break;
                 }
             case EnemyState.Patrolling:
@@ -72,7 +86,7 @@ public class NMA : MonoBehaviour
             case EnemyState.Attacking:
                 {
                     agent.speed = 0;
-                    //attack player, and swith back to chasing after attack animation finishes if they are now out of range
+                    //attack player, and swith back to chasing after attack animation finishes if they are now out of range or maybe for when the game is paused
                     break;
                 }
                 
@@ -80,6 +94,10 @@ public class NMA : MonoBehaviour
                 agent.speed = 0;
                 //destroy enemy and such.
                 break;
+            case EnemyState.Paused:
+                {
+                    break;
+                }
             default:
                 break;
         }

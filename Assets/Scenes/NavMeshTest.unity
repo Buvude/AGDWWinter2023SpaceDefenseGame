@@ -208,8 +208,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170591788642048134, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
       propertyPath: m_Name
-      value: EnemyGoalPoint (4)
+      value: LeftCloseEGP
       objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[0]
+      value: 
+      objectReference: {fileID: 297265278}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[1]
+      value: 
+      objectReference: {fileID: 156343933}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 1627695595}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
 --- !u!4 &297265276 stripped
@@ -281,8 +297,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170591788642048134, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
       propertyPath: m_Name
-      value: EnemyGoalPoint (2)
+      value: RightFarEGP
       objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[0]
+      value: 
+      objectReference: {fileID: 659980655}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[1]
+      value: 
+      objectReference: {fileID: 1666791185}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 1745019053}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
 --- !u!4 &659980653 stripped
@@ -354,8 +386,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170591788642048134, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
       propertyPath: m_Name
-      value: EnemyGoalPoint (3)
+      value: RightCloseEGP
       objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[0]
+      value: 
+      objectReference: {fileID: 297265278}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[1]
+      value: 
+      objectReference: {fileID: 1666791185}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 92736}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
 --- !u!1 &665435542
@@ -495,8 +543,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170591788642048134, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
       propertyPath: m_Name
-      value: EnemyGoalPoint (1)
+      value: LeftFarEGP
       objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[0]
+      value: 
+      objectReference: {fileID: 659980655}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[1]
+      value: 
+      objectReference: {fileID: 156343933}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 1666791185}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
 --- !u!1 &974878007
@@ -687,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5652424229940325414, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
       propertyPath: m_Name
-      value: spawn point (2)
+      value: FarSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 9073082087634578830, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
       propertyPath: EGP.Array.size
@@ -701,6 +765,10 @@ PrefabInstance:
       propertyPath: EGP.Array.data[1]
       value: 
       objectReference: {fileID: 156343933}
+    - target: {fileID: 9073082087634578830, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 659980655}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
 --- !u!4 &1627695594 stripped
@@ -724,6 +792,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7170591788642048132, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
   m_PrefabInstance: {fileID: 7170591789856318362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1666791185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+  m_PrefabInstance: {fileID: 7170591789856318362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d67c2fa92712a448bf055b1554c201b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687817767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5652424229940325414, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
       propertyPath: m_Name
-      value: spawn point
+      value: CloseSpawn
       objectReference: {fileID: 0}
     - target: {fileID: 9073082087634578830, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
       propertyPath: EGP.Array.size
@@ -1137,6 +1216,10 @@ PrefabInstance:
       propertyPath: EGP.Array.data[1]
       value: 
       objectReference: {fileID: 92736}
+    - target: {fileID: 9073082087634578830, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 297265278}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28259f142a913e44b960a64e52aa0d4d, type: 3}
 --- !u!1001 &7170591789856318362
@@ -1192,7 +1275,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170591788642048134, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
       propertyPath: m_Name
-      value: EnemyGoalPoint
+      value: CentralEGP
       objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[0]
+      value: 
+      objectReference: {fileID: 1745019053}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[1]
+      value: 
+      objectReference: {fileID: 156343933}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[2]
+      value: 
+      objectReference: {fileID: 1627695595}
+    - target: {fileID: 7959064815599960994, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
+      propertyPath: EGP.Array.data[3]
+      value: 
+      objectReference: {fileID: 92736}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8bb66909c1313d4887715bda7eca4cf, type: 3}
