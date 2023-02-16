@@ -18,7 +18,7 @@ public class EnemyGoalPoin : MonoBehaviour
     }
     public Transform NextPoint()
     {
-        return EGP[((int)Random.Range(0f, EGP.Count - 1))].gameObject.transform;
+        return EGP[((int)Random.Range(0f, EGP.Count))].gameObject.transform;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,6 +26,21 @@ public class EnemyGoalPoin : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<NMA>().NewHome(this);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<NMA>().NewHome(this);//setting the home to the spawn (so they don't get caught in an endless loop)
+            collision.gameObject.GetComponent<NMA>().CurrentState = NMA.EnemyState.Searching;
+            /*//temp testing for navmesh
+            collision.gameObject.GetComponent<NMA>().CurrentState = NMA.EnemyState.Patrolling;
+            //end temp test*/
+            collision.gameObject.GetComponent<NMA>().StateSwitch();
+            collision.gameObject.GetComponent<NMA>().nextTarget = NextPoint().gameObject.GetComponent<EnemyGoalPoin>();
+            collision.gameObject.GetComponent<NMA>().UpdateTarget();
         }
     }
     //add trigger area to trigger searching mode, and then set this EGP as their home.
