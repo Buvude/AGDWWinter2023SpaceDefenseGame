@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
-  speed: 10
-  speedMultiplier: 5
+  speed: 7
+  speedMultiplier: 10
   smoothing: 0.9
   tempPlayerx: 0
   tempPlayerz: 0

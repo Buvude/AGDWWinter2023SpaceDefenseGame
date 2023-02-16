@@ -71,6 +71,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (grounded)
         {
+            playerRB.AddForce(Vector3.down * 20, ForceMode.Acceleration);
             playerRB.AddForce(moveDirection.normalized * speed * speedMultiplier * Time.deltaTime, ForceMode.Impulse);
         }else if (grounded && SlopeCheck())
         {
