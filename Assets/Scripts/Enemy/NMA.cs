@@ -5,15 +5,18 @@ using UnityEngine.AI;
 
 public class NMA : MonoBehaviour
 {
+    public float NMAspeed;
     public EnemyGoalPoin CurrentHome;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave
     public enum EnemyState { Searching, Patrolling, Chasing, Attacking, Dead}; //depending on the state the enemy is in, it will act differently
     private Vector3 CurrentTarget; 
     private NavMeshAgent agent;
+    public EnemyState CurrentState;
     // Start is called before the first frame update
     void Start()
     {
-        //TEMPORARY TEST FOR NAVMESH
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = NMAspeed;
+        //TEMPORARY TEST FOR NAVMESH
         //make it so the spawn point is instatnly a "home" so that they don't search when spawned in
 
         /*CurrentTarget.Set(0f, 0f, 0f);*/
@@ -32,6 +35,47 @@ public class NMA : MonoBehaviour
     public void NewHome(EnemyGoalPoin EGP2)
     {
         CurrentHome = EGP2;
+        CurrentState = EnemyState.Searching;
+        
+        //play animation then switch state to patrolling (after choosing new path)
+    }
+
+    public void StateSwitch()
+    {
+        switch (CurrentState)
+        {
+            case EnemyState.Searching:
+                {
+                    agent.speed = 0;
+                    break;
+                }
+            case EnemyState.Patrolling:
+                {
+                    agent.speed = NMAspeed;
+                    break;
+                }
+            case EnemyState.Chasing:
+                {
+                    agent.speed = NMAspeed;
+                    //set destination to player
+                    UpdateTarget();
+                    break;
+                }
+                
+            case EnemyState.Attacking:
+                {
+                    agent.speed = 0;
+                    //attack player, and swith back to chasing after attack animation finishes if they are now out of range
+                    break;
+                }
+                
+            case EnemyState.Dead:
+                agent.speed = 0;
+                //destroy enemy and such.
+                break;
+            default:
+                break;
+        }
     }
 
     //for searching play ~5 second animation of searching, then change state to patrolling (after setting new goal point)
