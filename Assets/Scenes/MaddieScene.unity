@@ -1557,7 +1557,7 @@ PrefabInstance:
       objectReference: {fileID: 1496499026}
     - target: {fileID: 5801280828915794308, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
       propertyPath: amplitude
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5801280828915794308, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
       propertyPath: frequency

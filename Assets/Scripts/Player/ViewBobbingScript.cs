@@ -18,10 +18,13 @@ public class ViewBobbingScript : MonoBehaviour
 
     public Transform center;
 
+    public PlayerMovementScript playerScript;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
+        playerScript = GetComponent<PlayerMovementScript>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class ViewBobbingScript : MonoBehaviour
     {
         float speed = new Vector3(playerRB.velocity.x, playerRB.velocity.y, playerRB.velocity.z).magnitude;
 
-        if (speed >= 0.5)
+        if (speed >= 0.5 && playerScript.grounded)
         {
             camera.localPosition = Vector3.Lerp(camera.localPosition, FootStep(), 1 * Time.deltaTime);
         }else
@@ -55,7 +58,7 @@ public class ViewBobbingScript : MonoBehaviour
     private void ResetPosition()
     {
         if (camera.localPosition == startPos) return;
-        camera.localPosition = Vector3.Lerp(camera.localPosition, startPos, 25 * Time.deltaTime);
+        camera.localPosition = Vector3.Lerp(camera.localPosition, startPos, 8 * Time.deltaTime);
     }
     
     private void Stabilize()
