@@ -31,7 +31,7 @@ public class EnemyGoalPoin : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")&&collision.gameObject.GetComponent<NMA>().CurrentHome!=this)
         {
             collision.gameObject.GetComponent<NMA>().NewHome(this);//setting the home to the spawn (so they don't get caught in an endless loop)
             collision.gameObject.GetComponent<NMA>().CurrentState = NMA.EnemyState.Searching;
