@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class NMA : MonoBehaviour
 {
+    public EnemyLineOfSightTest eLOS;
     public Animator ani;
     public float NMAspeed;
     public EnemyGoalPoin CurrentHome, nextTarget;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7505995008389508016}
   - component: {fileID: -7084126526518717077}
   - component: {fileID: 135694033332249867}
+  - component: {fileID: 849882520}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Enemy
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadc1ccab01fb4f41972a2e556dc9dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eLOS: {fileID: 849882520}
   ani: {fileID: 135694033332249867}
   NMAspeed: 3.5
   CurrentHome: {fileID: 0}
@@ -189,3 +191,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &849882520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560461428540477023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3176b0e055596409c2ddfda36bfb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceforLOS: 100
+  Target: {fileID: 0}
