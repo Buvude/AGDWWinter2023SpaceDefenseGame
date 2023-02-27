@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator Timer()
@@ -50,3 +50,4 @@ public class GameManager : MonoBehaviour
             secondsToEnd--;
         }
     }
+}
