@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public int oxygen;
     public TextMeshProUGUI oxygenText;
-    public bool isRoundActive;
+    public bool isRoundActive = true;
     public TextMeshProUGUI timerText;
     private int secondsToEnd;
     public int timeOfRound = 60;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
             if (secondsToEnd == 0)
             {
-                GameOver();
+                isRoundActive = false;
             }
 
             yield return new WaitForSeconds(1);
