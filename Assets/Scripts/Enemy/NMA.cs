@@ -10,7 +10,7 @@ public class NMA : MonoBehaviour
     public float NMAspeed;
     public EnemyGoalPoin CurrentHome, nextTarget;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave
     public enum EnemyState { Searching, Paused, Patrolling, Chasing, Attacking, Dead}; //depending on the state the enemy is in, it will act differently
-    private Vector3 CurrentTarget; 
+    public Vector3 CurrentTarget; 
     private NavMeshAgent agent;
     public EnemyState CurrentState;
     // Start is called before the first frame update
@@ -39,14 +39,14 @@ public class NMA : MonoBehaviour
         CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
         agent.destination = CurrentTarget;
     }
-   /* public void UpdateTargetWthEGP()
-    {
-        CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
-        UpdateTarget();
-        *//*agent.destination = newPoint;*//*
-        CurrentTarget = NextTargetPossibly;
-        UpdateTarget();*//*
-    }*/
+    /* public void UpdateTargetWthEGP()
+     {
+         CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
+         UpdateTarget();
+         *//*agent.destination = newPoint;*//*
+         CurrentTarget = NextTargetPossibly;
+         UpdateTarget();*//*
+     }*/
     public void NewHome(EnemyGoalPoin EGP2)
     {
         CurrentHome = EGP2;
@@ -81,8 +81,9 @@ public class NMA : MonoBehaviour
             case EnemyState.Chasing:
                 {
                     agent.speed = NMAspeed;
+                    StartCoroutine(TimeToChase());
                     //set destination to player
-                    UpdateTarget();
+                    /*UpdateTarget();*/
                     break;
                 }
                 
@@ -103,6 +104,18 @@ public class NMA : MonoBehaviour
                 }
             default:
                 break;
+        }
+
+        IEnumerator TimeToChase()
+        {
+            while (CurrentState == EnemyState.Chasing)
+            {
+                //print("made it to corutine");
+                //CurrentTarget = eLOS.Target.position;
+                //UpdateTarget();
+                agent.destination=eLOS.Target.position;
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 

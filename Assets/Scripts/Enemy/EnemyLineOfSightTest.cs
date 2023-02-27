@@ -28,7 +28,7 @@ public class EnemyLineOfSightTest : MonoBehaviour
         //if in range
         if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270&&HaveLineOfSight())
         {
-            Debug.DrawLine(transform.position, Target.position, Color.green);
+            //Debug.DrawLine(transform.position, Target.position, Color.black);
             return true;
         }
         Debug.DrawLine(transform.position, Target.position, Color.red);
@@ -46,7 +46,9 @@ public class EnemyLineOfSightTest : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player"))
             {
-                //Debug.DrawRay(transform.position, direction, Color.black);
+                Debug.DrawRay(transform.position, direction, Color.green);
+                Mvmt.CurrentState = NMA.EnemyState.Chasing;
+                Mvmt.StateSwitch();
                 return true;
             }
         }
