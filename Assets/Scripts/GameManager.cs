@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     private int secondsToEnd;
     public int timeOfRound = 60;
+    public GameObject pauseScreen;
+    public bool isGamePaused;
+    public bool isGameActive;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,12 @@ public class GameManager : MonoBehaviour
         oxygenText.text = "O2: " + oxygen + "%";
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
+        isGamePaused = false;
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
     }
 
     public void UpdateTimer()
@@ -32,22 +42,59 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Escape is pressed.");
+        }
+    }
 
+    void PauseGame()
+    {
+        // can't pause in title and game over screen
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseScreen.activeInHierarchy && isGameActive)
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+            isGamePaused = true;
+            Debug.Log("Game is paused.");
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeInHierarchy)
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1;
+            isGamePaused = false;
+            Debug.Log("Game will resume.");
+        }
+    }
+
+    /*public void ResumeGame()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f;
+        isGamePaused = false;
+    }
+    */
+    public void GameOver()
+    {
+        isGameActive = false;
     }
 
     IEnumerator Timer()
     {
-        while (isRoundActive)
+        if (!isGamePaused)
         {
-            UpdateTimer();
-
-            if (secondsToEnd == 0)
+            while (isRoundActive)
             {
-                isRoundActive = false;
-            }
+                UpdateTimer();
 
-            yield return new WaitForSeconds(1);
-            secondsToEnd--;
+                if (secondsToEnd == 0)
+                {
+                    isRoundActive = false;
+                }
+
+                yield return new WaitForSeconds(1);
+                secondsToEnd--;
+            }
         }
     }
 }
