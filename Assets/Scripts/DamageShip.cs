@@ -17,6 +17,10 @@ public class DamageShip : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        ShipStatus();
+    }
+    public void ShipStatus()
+    {
         if (gameManager.isGameActive)
         {
             StartCoroutine(BreakShip());
@@ -25,10 +29,6 @@ public class DamageShip : MonoBehaviour
                 ShipDamage();
             }
         }
-    }
-    public void ShipStatus()
-    {
-        
     }
 
     public void ShipDamage()
