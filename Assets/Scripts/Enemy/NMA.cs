@@ -90,6 +90,8 @@ public class NMA : MonoBehaviour
             case EnemyState.Attacking:
                 {
                     agent.speed = 0;
+                    StopCoroutine(TimeToChase());
+
                     //attack player, and swith back to chasing after attack animation finishes if they are now out of range or maybe for when the game is paused
                     break;
                 }
@@ -107,13 +109,22 @@ public class NMA : MonoBehaviour
         }
 
         IEnumerator TimeToChase()
-        {
+        {/*
+            print(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, eLOS.gameObject.transform.position));
+            yield return new WaitForEndOfFrame();*/
             while (CurrentState == EnemyState.Chasing)
             {
                 //print("made it to corutine");
                 //CurrentTarget = eLOS.Target.position;
                 //UpdateTarget();
-                agent.destination=eLOS.Target.position;
+                agent.destination = eLOS.Target.position;
+                /*if (eLOS.WithinRange())
+                {
+                    CurrentState = EnemyState.Attacking;
+                    StateSwitch();
+                    StopCoroutine(TimeToChase());
+                    break;
+                }*/
                 yield return new WaitForSeconds(1f);
             }
         }

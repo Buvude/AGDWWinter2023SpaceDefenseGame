@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5896782968322408425}
   - component: {fileID: -7084126526518717077}
   - component: {fileID: 135694033332249867}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Test Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -72,6 +72,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceforLOS: 100
+  distanceforFiring: 5
+  range1: 5
+  range2: 10
   Target: {fileID: 0}
 --- !u!33 &3164715140473155827
 MeshFilter:
