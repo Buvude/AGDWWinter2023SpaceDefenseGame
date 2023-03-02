@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class PlayerRepair : MonoBehaviour
 {
-    public int gunDamage = 1;
-    public float fireRate = 0.25f;
-    public float range = 100f;
-
     public Camera playerCamera;
-
+    public float range = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,23 +15,25 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Shoot();
+            Repair();
         }
     }
 
-    void Shoot()
+
+
+    void Repair()
     {
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-            if (enemy != null)
+
+            Panel panel = hit.transform.GetComponent<Panel>();
+            if (panel != null)
             {
-                enemy.Die();
+                panel.Repair();
             }
         }
     }

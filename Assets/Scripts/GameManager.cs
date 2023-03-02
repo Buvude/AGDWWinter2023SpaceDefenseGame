@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public bool isGamePaused;
     public bool isGameActive;
+    public bool isShipDamaged;
+
+    public DamageShip damageManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
+        damageManager.ShipStatus();
     }
 
     public void UpdateTimer()
