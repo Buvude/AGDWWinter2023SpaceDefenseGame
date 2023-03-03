@@ -18,10 +18,17 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
     public bool isGameActive;
     public bool isShipDamaged;
+    public int oxygenDrain = 1;
 
-    public DamageShip damageManager;
+    public int cooldown = 10;
+    public int breakStateMin = 1;
+    public int breakStateMax = 7;
+    public int breakState;
+    public float checkBetween = 5.0f;
+    public float repeatRate = 1.0f;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         health = 100;
         healthText.text = "Health: " + health + "%";
@@ -30,12 +37,28 @@ public class GameManager : MonoBehaviour
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
         isGamePaused = false;
+        ShipStatus();
     }
 
     public void StartGame()
     {
         isGameActive = true;
-        damageManager.ShipStatus();
+        
+    }
+
+    void OxygenDrain()
+    {
+        if (isGameActive)
+        {
+            if (isShipDamaged)
+            {
+                oxygen -= oxygenDrain;
+            }
+            if (oxygen == 0)
+            {
+                GameOver();
+            }
+        }
     }
 
     public void UpdateTimer()
@@ -100,5 +123,36 @@ public class GameManager : MonoBehaviour
                 secondsToEnd--;
             }
         }
+    }
+
+
+    //Ship Damage Stuff
+    public void ShipStatus()
+    {
+        if (isGameActive)
+        {
+            StartCoroutine(BreakShip());
+            if (breakState == 6)
+            {
+                ShipDamage();
+            }
+        }
+    }
+
+    public void ShipDamage()
+    {
+        StopCoroutine(BreakShip());
+        isShipDamaged = true;
+    }
+
+    public IEnumerator BreakShip()
+    {
+        breakState = Random.Range(breakStateMin, breakStateMax);
+        yield return new WaitForSeconds(checkBetween);
+    }
+
+    void ShipBreak()
+    {
+        
     }
 }

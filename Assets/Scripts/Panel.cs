@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Panel : MonoBehaviour
 {
-    public DamageShip damageManager;
     public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +22,7 @@ public class Panel : MonoBehaviour
         if (gameManager.isShipDamaged == true)
         {
             gameManager.isShipDamaged = false;
-            StartCoroutine(damageManager.BreakShip());
+            StartCoroutine(gameManager.BreakShip());
         }
     }
 }
