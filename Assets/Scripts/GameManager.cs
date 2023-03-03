@@ -150,9 +150,4 @@ public class GameManager : MonoBehaviour
         breakState = Random.Range(breakStateMin, breakStateMax);
         yield return new WaitForSeconds(checkBetween);
     }
-
-    void ShipBreak()
-    {
-        
-    }
 }
