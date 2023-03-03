@@ -37,11 +37,13 @@ public class GameManager : MonoBehaviour
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
         isGamePaused = false;
+        ShipStatus();
     }
 
     public void StartGame()
     {
         isGameActive = true;
+        
     }
 
     void OxygenDrain()
@@ -139,18 +141,18 @@ public class GameManager : MonoBehaviour
 
     public void ShipDamage()
     {
+        StopCoroutine(BreakShip());
         isShipDamaged = true;
-        StopCoroutine("BreakShip");
     }
 
     public IEnumerator BreakShip()
     {
-        InvokeRepeating("ShipBreak", checkBetween, repeatRate);
+        breakState = Random.Range(breakStateMin, breakStateMax);
         yield return new WaitForSeconds(checkBetween);
     }
 
     void ShipBreak()
     {
-        breakState = Random.Range(breakStateMin, breakStateMax);
+        
     }
 }
