@@ -72,10 +72,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceforLOS: 100
-  distanceforFiring: 5
-  range1: 5
-  range2: 10
+  distanceforFiring: 10
+  range1: 10
+  range2: 20
   Target: {fileID: 0}
+  AnimManag: {fileID: 135694033332249867}
 --- !u!33 &3164715140473155827
 MeshFilter:
   m_ObjectHideFlags: 0

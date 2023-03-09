@@ -58,7 +58,11 @@ public class NMA : MonoBehaviour
     public void postAnimation()
     {
         Debug.Log("got to post animation");
-        CurrentState = EnemyState.Patrolling;
+        if (CurrentState == EnemyState.Searching)
+        {
+            CurrentState = EnemyState.Patrolling;
+        }
+        
         StateSwitch();
     }
     public void StateSwitch()//paused is an inbetween so stuff doesn't keep getting updated

@@ -7,6 +7,7 @@ public class EnemyLineOfSightTest : MonoBehaviour
     public int distanceforLOS, distanceforFiring, range1, range2;
     internal NMA Mvmt;
     public Transform Target;
+    public Animator AnimManag;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,10 @@ public class EnemyLineOfSightTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       /* if (Input.GetKeyDown(KeyCode.D))
+        {
+            print(Vector3.Distance(this.transform.position, Target.position));
+        }*/
         /*if(Mvmt.CurrentState != NMA.EnemyState.Dead&& Mvmt.CurrentState != NMA.EnemyState.Attacking&& Mvmt.CurrentState != NMA.EnemyState.Chasing)
         {
             Targetable();
@@ -27,6 +32,11 @@ public class EnemyLineOfSightTest : MonoBehaviour
             Mvmt.StateSwitch();
         }
         else if(!WithinRange()&& Mvmt.CurrentState == NMA.EnemyState.Attacking)
+        {
+            Mvmt.CurrentState = NMA.EnemyState.Attacking;
+            Mvmt.StateSwitch();
+        }*/
+        /*if (WithinRange())
         {
             Mvmt.CurrentState = NMA.EnemyState.Attacking;
             Mvmt.StateSwitch();
@@ -45,6 +55,7 @@ public class EnemyLineOfSightTest : MonoBehaviour
             case NMA.EnemyState.Chasing:
                 if (WithinRange())
                 {
+                    print("state supposedly switched to attacking");
                     Mvmt.CurrentState = NMA.EnemyState.Attacking;
                     Mvmt.StateSwitch();
                 }
@@ -72,6 +83,7 @@ public class EnemyLineOfSightTest : MonoBehaviour
         //if in range
         if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270&&HaveLineOfSight())
         {
+            AnimManag.enabled = false;
             Debug.DrawLine(transform.position, Target.position, Color.green);
             return true;
         }
@@ -93,6 +105,7 @@ public class EnemyLineOfSightTest : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player")&&Mvmt.CurrentState!=NMA.EnemyState.Attacking&& Mvmt.CurrentState != NMA.EnemyState.Dead&& Mvmt.CurrentState != NMA.EnemyState.Chasing)
             {
+                AnimManag.enabled = false;
                 //Debug.DrawRay(transform.position, direction, Color.green);
                 Mvmt.CurrentState = NMA.EnemyState.Chasing;
                 Mvmt.StateSwitch();
@@ -103,17 +116,19 @@ public class EnemyLineOfSightTest : MonoBehaviour
     }
     public bool WithinRange()
     {
-        print("Made it to withinRange");
+        //print("Made it to withinRange");
         /*RaycastHit hit;
         Vector3 direction = Target.position - transform.position;
         hit = new RaycastHit();
         hit.distance = distanceforFiring;*/
-        if (Targetable()&& /*Physics.Raycast(transform.position, direction, out hit, hit.distance)*/Vector3.Distance(transform.position, Target.position)<=distanceforFiring)
+        if (/*Targetable()&& *//*Physics.Raycast(transform.position, direction, out hit, hit.distance)*/Vector3.Distance(this.transform.position, Target.position)<=distanceforFiring)
         {
+            //print("Within range");
             return true;
         }
         else
         {
+            //print("Out of range");
             return false;
         }
     }
