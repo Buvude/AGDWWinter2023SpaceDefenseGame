@@ -147,7 +147,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator BreakShip()
     {
-        breakState = Random.Range(breakStateMin, breakStateMax);
+        for (int i = 0; i < breakState; i++)
+        {
+            breakState = Random.Range(breakStateMin, breakStateMax);
+        }
         yield return new WaitForSeconds(checkBetween);
     }
 }
