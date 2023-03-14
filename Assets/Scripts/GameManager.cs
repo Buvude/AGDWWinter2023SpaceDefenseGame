@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Escape is pressed.");
         }
+        if (breakState == 6)
+        {
+            isShipDamaged = true;
+        }
     }
 
     void PauseGame()
@@ -132,22 +136,17 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             StartCoroutine(BreakShip());
-            if (breakState == 6)
-            {
-                ShipDamage();
-            }
         }
-    }
-
-    public void ShipDamage()
-    {
-        StopCoroutine(BreakShip());
-        isShipDamaged = true;
     }
 
     public IEnumerator BreakShip()
     {
-        breakState = Random.Range(breakStateMin, breakStateMax);
-        yield return new WaitForSeconds(checkBetween);
+        print("Change Break State!!!");
+        //for (int i = 0; i < breakState; i++)
+        while(!isShipDamaged)
+        {
+            breakState = Random.Range(breakStateMin, breakStateMax);
+            yield return new WaitForSeconds(checkBetween);
+        }
     }
 }
