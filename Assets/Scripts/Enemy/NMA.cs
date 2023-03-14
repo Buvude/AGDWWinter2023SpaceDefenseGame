@@ -95,7 +95,7 @@ public class NMA : MonoBehaviour
                 {
                     agent.speed = 0;
                     StopCoroutine(TimeToChase());
-
+                    
                     //attack player, and swith back to chasing after attack animation finishes if they are now out of range or maybe for when the game is paused
                     break;
                 }

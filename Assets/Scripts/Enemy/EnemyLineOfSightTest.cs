@@ -121,7 +121,7 @@ public class EnemyLineOfSightTest : MonoBehaviour
         Vector3 direction = Target.position - transform.position;
         hit = new RaycastHit();
         hit.distance = distanceforFiring;*/
-        if (/*Targetable()&& *//*Physics.Raycast(transform.position, direction, out hit, hit.distance)*/Vector3.Distance(this.transform.position, Target.position)<=distanceforFiring)
+        if (Vector3.Distance(this.transform.position, Target.position)<=distanceforFiring)
         {
             //print("Within range");
             return true;
