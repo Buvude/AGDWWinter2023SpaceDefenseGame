@@ -44,4 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca10727ca1136474b9fbf6f449e6d6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   healthText: {fileID: 0}
+  oxygen: 0
+  oxygenText: {fileID: 0}
+  isRoundActive: 1
+  timerText: {fileID: 0}
+  timeOfRound: 60
+  pauseScreen: {fileID: 0}
+  isGamePaused: 0
+  isGameActive: 0
+  isShipDamaged: 0
+  damageManager: {fileID: 1445921988568234606, guid: 8a958110cc1cc4248b1a91907d0597a3, type: 3}

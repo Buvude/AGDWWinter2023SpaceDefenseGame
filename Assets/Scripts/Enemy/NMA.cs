@@ -67,12 +67,13 @@ public class NMA : MonoBehaviour
             case EnemyState.Searching:
                 {
                     agent.speed = 0;
-                    CurrentState = EnemyState.Paused;
+                    /*CurrentState = EnemyState.Paused;*/
                     ani.SetTrigger("SearchingTime");
                     break;
                 }
             case EnemyState.Patrolling:
                 {
+                    /*UpdateTarget();*/
                     agent.speed = NMAspeed;
                     break;
                 }
