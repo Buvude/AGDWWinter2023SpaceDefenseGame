@@ -9,15 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3959440850850642518}
+  - component: {fileID: 7505995008389508016}
+  - component: {fileID: 849882520}
   - component: {fileID: 3164715140473155827}
   - component: {fileID: 248296004990011412}
   - component: {fileID: 6454503560240154467}
   - component: {fileID: 2025774791253825992}
   - component: {fileID: 5896782968322408425}
-  - component: {fileID: 7505995008389508016}
   - component: {fileID: -7084126526518717077}
   - component: {fileID: 135694033332249867}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Test Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -39,6 +40,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7505995008389508016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560461428540477023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadc1ccab01fb4f41972a2e556dc9dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyFireCooldown: 5
+  Fireball: {fileID: 1156101410979947013, guid: 224806cc59fedb34cb20d5c9b113563a, type: 3}
+  eLOS: {fileID: 849882520}
+  ani: {fileID: 135694033332249867}
+  NMAspeed: 3.5
+  CurrentHome: {fileID: 0}
+  nextTarget: {fileID: 0}
+  CurrentTarget: {x: 0, y: 0, z: 0}
+  CurrentState: 1
+--- !u!114 &849882520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560461428540477023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3176b0e055596409c2ddfda36bfb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceforLOS: 100
+  distanceforFiring: 10
+  range1: 10
+  range2: 20
+  Target: {fileID: 0}
+  AnimManag: {fileID: 135694033332249867}
 --- !u!33 &3164715140473155827
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -136,23 +176,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7505995008389508016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560461428540477023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aadc1ccab01fb4f41972a2e556dc9dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ani: {fileID: 135694033332249867}
-  NMAspeed: 3.5
-  CurrentHome: {fileID: 0}
-  nextTarget: {fileID: 0}
-  CurrentState: 1
 --- !u!54 &-7084126526518717077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,7 +187,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

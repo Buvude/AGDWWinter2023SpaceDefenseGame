@@ -5,11 +5,14 @@ using UnityEngine.AI;
 
 public class NMA : MonoBehaviour
 {
+    public int enemyFireCooldown;
+    public GameObject Fireball;
+    public EnemyLineOfSightTest eLOS;
     public Animator ani;
     public float NMAspeed;
     public EnemyGoalPoin CurrentHome, nextTarget;//This will make the NMA "immune" to the hitbox on the EGP, so it can leave
     public enum EnemyState { Searching, Paused, Patrolling, Chasing, Attacking, Dead}; //depending on the state the enemy is in, it will act differently
-    private Vector3 CurrentTarget; 
+    public Vector3 CurrentTarget; 
     private NavMeshAgent agent;
     public EnemyState CurrentState;
     // Start is called before the first frame update
@@ -38,14 +41,14 @@ public class NMA : MonoBehaviour
         CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
         agent.destination = CurrentTarget;
     }
-   /* public void UpdateTargetWthEGP()
-    {
-        CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
-        UpdateTarget();
-        *//*agent.destination = newPoint;*//*
-        CurrentTarget = NextTargetPossibly;
-        UpdateTarget();*//*
-    }*/
+    /* public void UpdateTargetWthEGP()
+     {
+         CurrentTarget = nextTarget.gameObject.GetComponent<Transform>().position;
+         UpdateTarget();
+         *//*agent.destination = newPoint;*//*
+         CurrentTarget = NextTargetPossibly;
+         UpdateTarget();*//*
+     }*/
     public void NewHome(EnemyGoalPoin EGP2)
     {
         CurrentHome = EGP2;
@@ -57,7 +60,11 @@ public class NMA : MonoBehaviour
     public void postAnimation()
     {
         Debug.Log("got to post animation");
-        CurrentState = EnemyState.Patrolling;
+        if (CurrentState == EnemyState.Searching)
+        {
+            CurrentState = EnemyState.Patrolling;
+        }
+        
         StateSwitch();
     }
     public void StateSwitch()//paused is an inbetween so stuff doesn't keep getting updated
@@ -80,14 +87,18 @@ public class NMA : MonoBehaviour
             case EnemyState.Chasing:
                 {
                     agent.speed = NMAspeed;
+                    StopCoroutine(TimeToShoot());
+                    StartCoroutine(TimeToChase());
                     //set destination to player
-                    UpdateTarget();
+                    /*UpdateTarget();*/
                     break;
                 }
                 
             case EnemyState.Attacking:
                 {
                     agent.speed = 0;
+                    StopCoroutine(TimeToChase());
+                    StartCoroutine(TimeToShoot());
                     //attack player, and swith back to chasing after attack animation finishes if they are now out of range or maybe for when the game is paused
                     break;
                 }
@@ -102,6 +113,46 @@ public class NMA : MonoBehaviour
                 }
             default:
                 break;
+        }
+        IEnumerator TimeToShoot()
+        {
+            while (true)
+            {
+                this.transform.LookAt(eLOS.Target);
+                Quaternion rotationForAttack=new Quaternion();
+                rotationForAttack.x = Vector3.Angle(transform.position, eLOS.Target.transform.position);
+                rotationForAttack.y = transform.rotation.y;
+                rotationForAttack.z = transform.rotation.z;
+                Instantiate(Fireball, transform.position, transform.rotation);
+                yield return new WaitForSeconds(enemyFireCooldown);
+                if (!eLOS.WithinRange())
+                {
+                    CurrentState = EnemyState.Chasing;
+                    StateSwitch();
+                    break;
+                }
+            }
+        }
+
+        IEnumerator TimeToChase()
+        {/*
+            print(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, eLOS.gameObject.transform.position));
+            yield return new WaitForEndOfFrame();*/
+            while (CurrentState == EnemyState.Chasing)
+            {
+                //print("made it to corutine");
+                //CurrentTarget = eLOS.Target.position;
+                //UpdateTarget();
+                agent.destination = eLOS.Target.position;
+                /*if (eLOS.WithinRange())
+                {
+                    CurrentState = EnemyState.Attacking;
+                    StateSwitch();
+                    StopCoroutine(TimeToChase());
+                    break;
+                }*/
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 
