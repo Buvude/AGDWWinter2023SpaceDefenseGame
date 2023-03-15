@@ -87,6 +87,7 @@ public class NMA : MonoBehaviour
             case EnemyState.Chasing:
                 {
                     agent.speed = NMAspeed;
+                    StopCoroutine(TimeToShoot());
                     StartCoroutine(TimeToChase());
                     //set destination to player
                     /*UpdateTarget();*/
@@ -124,6 +125,12 @@ public class NMA : MonoBehaviour
                 rotationForAttack.z = transform.rotation.z;
                 Instantiate(Fireball, transform.position, transform.rotation);
                 yield return new WaitForSeconds(enemyFireCooldown);
+                if (!eLOS.WithinRange())
+                {
+                    CurrentState = EnemyState.Chasing;
+                    StateSwitch();
+                    break;
+                }
             }
         }
 
