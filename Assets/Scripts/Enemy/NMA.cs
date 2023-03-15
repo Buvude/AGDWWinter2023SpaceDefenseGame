@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class NMA : MonoBehaviour
 {
+    public int enemyFireCooldown;
+    public GameObject Fireball;
     public EnemyLineOfSightTest eLOS;
     public Animator ani;
     public float NMAspeed;
@@ -95,7 +97,7 @@ public class NMA : MonoBehaviour
                 {
                     agent.speed = 0;
                     StopCoroutine(TimeToChase());
-                    
+                    StartCoroutine(TimeToShoot());
                     //attack player, and swith back to chasing after attack animation finishes if they are now out of range or maybe for when the game is paused
                     break;
                 }
@@ -110,6 +112,19 @@ public class NMA : MonoBehaviour
                 }
             default:
                 break;
+        }
+        IEnumerator TimeToShoot()
+        {
+            while (true)
+            {
+                this.transform.LookAt(eLOS.Target);
+                Quaternion rotationForAttack=new Quaternion();
+                rotationForAttack.x = Vector3.Angle(transform.position, eLOS.Target.transform.position);
+                rotationForAttack.y = transform.rotation.y;
+                rotationForAttack.z = transform.rotation.z;
+                Instantiate(Fireball, transform.position, transform.rotation);
+                yield return new WaitForSeconds(enemyFireCooldown);
+            }
         }
 
         IEnumerator TimeToChase()
