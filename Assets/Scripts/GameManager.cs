@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Escape is pressed.");
+            PauseGame();
         }
         if (breakState == 6)
         {
@@ -98,13 +99,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*public void ResumeGame()
+    public void ResumeGame()
     {
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
     }
-    */
+    
     public void GameOver()
     {
         isGameActive = false;
