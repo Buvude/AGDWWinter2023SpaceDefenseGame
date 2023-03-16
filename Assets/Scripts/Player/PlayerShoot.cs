@@ -31,8 +31,9 @@ public class PlayerShoot : MonoBehaviour
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward);
             
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.Die();
