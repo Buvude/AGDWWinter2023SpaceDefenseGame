@@ -6,16 +6,19 @@ public class enemyProjectile : MonoBehaviour
 {
     public NMA Parent;
     public float speed;
+    private Vector3 targetSpace;
     // Start is called before the first frame update
     void Start()
     {
         print("spawned projectile");
+        targetSpace = GameObject.FindGameObjectWithTag("Player").transform.position;
+        transform.LookAt(targetSpace);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * speed * Time.deltaTime, Space.Self);
+        transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
