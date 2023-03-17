@@ -1329,17 +1329,17 @@ MonoBehaviour:
   m_Mesh: {fileID: 0}
   m_VersionIndex: 913
   m_IsSelectable: 1
-  m_SelectedFaces: 0e000000
+  m_SelectedFaces: 
   m_SelectedEdges:
-  - a: 56
-    b: 57
-  - a: 58
-    b: 56
-  - a: 57
-    b: 59
-  - a: 59
-    b: 58
-  m_SelectedVertices: 38000000390000003a0000003b000000
+  - a: 27
+    b: 26
+  - a: 48
+    b: 49
+  - a: 31
+    b: 30
+  - a: 52
+    b: 53
+  m_SelectedVertices: 1b0000001a00000030000000310000001f0000001e0000003400000035000000
 --- !u!23 &5666496773616081838
 MeshRenderer:
   m_ObjectHideFlags: 0
