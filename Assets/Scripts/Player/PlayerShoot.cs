@@ -28,15 +28,16 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, Mathf.Infinity))
         {
             Debug.Log(hit.transform.name);
-            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward);
+            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward, Color.red);
             
             Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.Die();
+                enemy = null;
             }
         }
     }
