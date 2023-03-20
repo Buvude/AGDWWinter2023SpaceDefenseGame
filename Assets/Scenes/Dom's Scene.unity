@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -333,8 +333,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'O2:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9c3a2582f4894489a49b75df77114b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 1a9c3a2582f4894489a49b75df77114b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 1143217931}
   - component: {fileID: 1143217930}
   - component: {fileID: 1143217929}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,6 +746,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7449415376600540805, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1215963434230160607, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
       propertyPath: m_Name
       value: Player
@@ -796,6 +800,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
+--- !u!1 &1652914420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1215963434230160607, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
+  m_PrefabInstance: {fileID: 1652914419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1652914421 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1398409979091171449, guid: 78aef3429cad2ab48902f8444d481302, type: 3}
+  m_PrefabInstance: {fileID: 1652914419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1652914422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652914420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7b57253a8b24046aee92a74f081423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDamage: 1
+  fireRate: 0.25
+  range: 100
+  playerCamera: {fileID: 1652914421}
 --- !u!1 &1687817767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,8 +1146,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9c3a2582f4894489a49b75df77114b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 1a9c3a2582f4894489a49b75df77114b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1251,8 +1281,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Health:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a9c3a2582f4894489a49b75df77114b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 1a9c3a2582f4894489a49b75df77114b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
