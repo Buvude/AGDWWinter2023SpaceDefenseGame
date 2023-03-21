@@ -132,34 +132,38 @@ public class NMA : MonoBehaviour
                     break;
                 }
             }
-        }
-
-        IEnumerator TimeToChase()
-        {/*
-            print(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, eLOS.gameObject.transform.position));
-            yield return new WaitForEndOfFrame();*/
-            while (CurrentState == EnemyState.Chasing)
-            {
-                //print("made it to corutine");
-                //CurrentTarget = eLOS.Target.position;
-                //UpdateTarget();
-                agent.destination = eLOS.Target.position;
-                /*if (eLOS.WithinRange())
-                {
-                    CurrentState = EnemyState.Attacking;
-                    StateSwitch();
-                    StopCoroutine(TimeToChase());
-                    break;
-                }*/
-                yield return new WaitForSeconds(1f);
-            }
+        
         }
     }
+    IEnumerator TimeToChase()
+    {/*
+            print(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, eLOS.gameObject.transform.position));
+            yield return new WaitForEndOfFrame();*/
+        while (CurrentState == EnemyState.Chasing)
+        {
+            //print("made it to corutine");
+            //CurrentTarget = eLOS.Target.position;
+            //UpdateTarget();
+            agent.destination = eLOS.Target.position;
+            /*if (eLOS.WithinRange())
+            {
+                CurrentState = EnemyState.Attacking;
+                StateSwitch();
+                StopCoroutine(TimeToChase());
+                break;
+            }*/
+            yield return new WaitForSeconds(1f);
+        }
+    }
+    public void OnPlayerAttack()
+    {
 
-    //for searching play ~5 second animation of searching, then change state to patrolling (after setting new goal point)
-    //For patrolling move towards new goal point, switch to searching once arrive in trigger for goal point
-    //at any point if the enemy sees the player, or is attacked, or see's another enemy that is chasing/attacking the player
-    //they will exit whatever state they are in, and enter chasing, in which they move towards the player until within range.
-    //once within range they will enter attacking mode, when they die they enter death mode.
-    //Chasing and attacking mode will swap between one another, but never go back to searching or patrolling.
+    }
+
+        //for searching play ~5 second animation of searching, then change state to patrolling (after setting new goal point)
+        //For patrolling move towards new goal point, switch to searching once arrive in trigger for goal point
+        //at any point if the enemy sees the player, or is attacked, or see's another enemy that is chasing/attacking the player
+        //they will exit whatever state they are in, and enter chasing, in which they move towards the player until within range.
+        //once within range they will enter attacking mode, when they die they enter death mode.
+        //Chasing and attacking mode will swap between one another, but never go back to searching or patrolling.
 }
