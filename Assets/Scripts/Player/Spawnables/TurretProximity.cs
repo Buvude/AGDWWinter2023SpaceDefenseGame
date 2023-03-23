@@ -15,14 +15,19 @@ public class TurretProximity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (turretScript.enemiesInProx.Count > 0)
+        {
+            turretScript.targeting = true;
+        }else
+        {
+            turretScript.targeting = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            turretScript.targeting = true;
             turretScript.enemiesInProx.Add(other.gameObject);
         }
     }
@@ -31,7 +36,6 @@ public class TurretProximity : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            turretScript.targeting = false;
             turretScript.enemiesInProx.Remove(other.gameObject);
         }
     }
