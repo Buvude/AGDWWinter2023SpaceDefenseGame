@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnRange = 9;
     public int waveNumber = 1;
     private int randomChoice;
+    public GameManager gameManager;
     
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnNewEnemy()
     {
         enemyCount = FindObjectsOfType<Enemy>().Length;
-        if (enemyCount == 0)
+        if (enemyCount == 0 && gameManager.isGameActive)
         {
             waveNumber++;
             SpawnEnemyWave(numOfEnemies + waveNumber);
