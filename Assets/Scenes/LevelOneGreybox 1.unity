@@ -12841,8 +12841,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7889144107937426745, guid: a63a7459d7d46c347bda80e73987dfc3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a63a7459d7d46c347bda80e73987dfc3, type: 3}
+--- !u!114 &317875121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3191871191290239655, guid: a63a7459d7d46c347bda80e73987dfc3, type: 3}
+  m_PrefabInstance: {fileID: 317875120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &317875122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3191871189570200576, guid: a63a7459d7d46c347bda80e73987dfc3, type: 3}
+  m_PrefabInstance: {fileID: 317875120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &317875123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7063576535551113863, guid: a63a7459d7d46c347bda80e73987dfc3, type: 3}
+  m_PrefabInstance: {fileID: 317875120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &317875124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7889144107937426745, guid: a63a7459d7d46c347bda80e73987dfc3, type: 3}
+  m_PrefabInstance: {fileID: 317875120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &326980179
 Mesh:
   m_ObjectHideFlags: 0
@@ -13696,6 +13738,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2527502209018984574, guid: 012cf63a80bde5348a5cc5d6c1a38e4e, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 317875123}
+    - target: {fileID: 2527502209018984574, guid: 012cf63a80bde5348a5cc5d6c1a38e4e, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 317875122}
+    - target: {fileID: 2527502209018984574, guid: 012cf63a80bde5348a5cc5d6c1a38e4e, type: 3}
+      propertyPath: oxygenText
+      value: 
+      objectReference: {fileID: 317875121}
+    - target: {fileID: 2527502209018984574, guid: 012cf63a80bde5348a5cc5d6c1a38e4e, type: 3}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 317875124}
     - target: {fileID: 2527502209018984575, guid: 012cf63a80bde5348a5cc5d6c1a38e4e, type: 3}
       propertyPath: m_RootOrder
       value: 0

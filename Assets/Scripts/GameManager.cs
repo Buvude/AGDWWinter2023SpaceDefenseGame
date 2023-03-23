@@ -30,14 +30,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       /* health = 100;
-        healthText.text = "Health: " + health + "%";
+        isGameActive = true;
+        health = 100;
+        healthText.text =health + "%";
         oxygen = 100;
-        oxygenText.text = "O2: " + oxygen + "%";
+        oxygenText.text =oxygen + "%";
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
         isGamePaused = false;
-        ShipStatus();*/
+        ShipStatus();
     }
 
     public void StartGame()
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)||Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("Escape is pressed.");
             PauseGame();
@@ -86,21 +87,26 @@ public class GameManager : MonoBehaviour
 
     void PauseGame()
     {
-        // can't pause in title and game over screen
-        if (Input.GetKeyDown(KeyCode.Escape) && !pauseScreen.activeInHierarchy && isGameActive)
+        if (pauseScreen != null)
         {
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0;
-            isGamePaused = true;
-            Debug.Log("Game is paused.");
+            print("test in the method");
+            // can't pause in title and game over screen
+            if (/*Input.GetKeyDown(KeyCode.Escape) &&*/ !isGamePaused && isGameActive)
+            {
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+                isGamePaused = true;
+                Debug.Log("Game is paused.");
+            }
+            else if (/*Input.GetKeyDown(KeyCode.Escape) &&*/ isGamePaused)
+            {
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1;
+                isGamePaused = false;
+                Debug.Log("Game will resume.");
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeInHierarchy)
-        {
-            pauseScreen.SetActive(false);
-            Time.timeScale = 1;
-            isGamePaused = false;
-            Debug.Log("Game will resume.");
-        }
+        
     }
 
     public void ResumeGame()
