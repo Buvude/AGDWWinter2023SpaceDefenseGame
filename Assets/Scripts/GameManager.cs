@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         
     }
-
+    public int getSecondsLeft()
+    {
+        return secondsToEnd;
+    }
     void OxygenDrain()
     {
         if (isGameActive)
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
 
     public void UpdateTimer()
     {
