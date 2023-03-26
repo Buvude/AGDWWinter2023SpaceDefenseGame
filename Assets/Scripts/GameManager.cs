@@ -140,6 +140,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateHealth(int healthToChange)
+    {
+        health += healthToChange;
+        healthText.text = "Health:" + health;
+    }
+
     public IEnumerator BreakShip()
     {
         print("Change Break State!!!");
