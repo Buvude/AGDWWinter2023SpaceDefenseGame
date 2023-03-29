@@ -30,11 +30,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        isGameActive = true;
         health = 100;
-        healthText.text =health + "%";
+        healthText.text = "Health: " + health + "%";
         oxygen = 100;
-        oxygenText.text =oxygen + "%";
+        oxygenText.text = "O2: " + oxygen + "%";
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
         isGamePaused = false;
@@ -46,10 +45,7 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         
     }
-    public int getSecondsLeft()
-    {
-        return secondsToEnd;
-    }
+
     void OxygenDrain()
     {
         if (isGameActive)
@@ -57,6 +53,7 @@ public class GameManager : MonoBehaviour
             if (isShipDamaged)
             {
                 oxygen -= oxygenDrain;
+                oxygenText.text = "O2: " + oxygen + "%";
             }
             if (oxygen == 0)
             {
@@ -64,7 +61,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
 
     public void UpdateTimer()
     {
@@ -74,7 +70,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)||Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Escape is pressed.");
             PauseGame();
@@ -87,26 +83,21 @@ public class GameManager : MonoBehaviour
 
     void PauseGame()
     {
-        if (pauseScreen != null)
+        // can't pause in title and game over screen
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseScreen.activeInHierarchy && isGameActive)
         {
-            print("test in the method");
-            // can't pause in title and game over screen
-            if (/*Input.GetKeyDown(KeyCode.Escape) &&*/ !isGamePaused && isGameActive)
-            {
-                pauseScreen.SetActive(true);
-                Time.timeScale = 0;
-                isGamePaused = true;
-                Debug.Log("Game is paused.");
-            }
-            else if (/*Input.GetKeyDown(KeyCode.Escape) &&*/ isGamePaused)
-            {
-                pauseScreen.SetActive(false);
-                Time.timeScale = 1;
-                isGamePaused = false;
-                Debug.Log("Game will resume.");
-            }
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+            isGamePaused = true;
+            Debug.Log("Game is paused.");
         }
-        
+        else if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeInHierarchy)
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1;
+            isGamePaused = false;
+            Debug.Log("Game will resume.");
+        }
     }
 
     public void ResumeGame()
@@ -147,6 +138,16 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             StartCoroutine(BreakShip());
+        }
+    }
+
+    public void UpdateHealth(int healthToChange)
+    {
+        health += healthToChange;
+        healthText.text = "Health:" + health + "%";
+        if (health == 0)
+        {
+            GameOver();
         }
     }
 
