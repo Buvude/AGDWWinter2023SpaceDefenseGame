@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
         ShipStatus();
     }
 
+    public void resetRountTimer()
+    {
+        secondsToEnd = 60;
+    }
+    public int getSecondsLeft()
+    {
+        return secondsToEnd;
+    }
     public void StartGame()
     {
         isGameActive = true;

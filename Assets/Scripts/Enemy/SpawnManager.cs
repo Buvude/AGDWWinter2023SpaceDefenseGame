@@ -47,6 +47,7 @@ public class SpawnManager : MonoBehaviour
             {
                 waveNumber++;
                 SpawnEnemyWave(numOfEnemies + waveNumber);
+                gameManager.resetRountTimer();
             }
             yield return new WaitForSeconds(5);
         }
