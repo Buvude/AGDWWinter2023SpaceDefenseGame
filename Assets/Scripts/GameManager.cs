@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       /* health = 100;
+        health = 100;
         healthText.text = "Health: " + health + "%";
         oxygen = 100;
         oxygenText.text = "O2: " + oxygen + "%";
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
         isGamePaused = false;
-        ShipStatus();*/
+        ShipStatus();
     }
 
     public void StartGame()
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
             if (isShipDamaged)
             {
                 oxygen -= oxygenDrain;
+                oxygenText.text = "O2: " + oxygen + "%";
             }
             if (oxygen == 0)
             {
@@ -137,6 +138,16 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             StartCoroutine(BreakShip());
+        }
+    }
+
+    public void UpdateHealth(int healthToChange)
+    {
+        health += healthToChange;
+        healthText.text = "Health:" + health + "%";
+        if (health == 0)
+        {
+            GameOver();
         }
     }
 
