@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Escape is pressed.");
             PauseGame();
         }
         if (breakState == 6)
