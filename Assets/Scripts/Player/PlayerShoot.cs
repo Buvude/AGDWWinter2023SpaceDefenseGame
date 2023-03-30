@@ -29,6 +29,10 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(projectile, transform.position, playerCamera.transform.rotation);
+        for (int i = 0; i < 8; i++)
+        {
+            Instantiate(projectile, transform.position, playerCamera.transform.rotation);
+        }
+        
     }
 }
