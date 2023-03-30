@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int health;
     public TextMeshProUGUI healthText;
-    public int oxygen;
+    public float oxygen;
     public TextMeshProUGUI oxygenText;
     public bool isRoundActive = true;
     public TextMeshProUGUI timerText;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
     public bool isGameActive;
     public bool isShipDamaged;
-    public int oxygenDrain = 1;
+    public float oxygenDrain = 1.0f;
 
     public int cooldown = 10;
     public int breakStateMin = 1;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         health = 100;
         healthText.text = "Health: " + health + "%";
-        oxygen = 100;
+        oxygen = 100.0f;
         oxygenText.text = "O2: " + oxygen + "%";
         secondsToEnd = timeOfRound;
         StartCoroutine(Timer());
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
 
-            oxygen -= oxygenDrain;
+            oxygen -= oxygenDrain * Time.deltaTime;
             oxygenText.text = "O2: " + oxygen + "%";
 
 
