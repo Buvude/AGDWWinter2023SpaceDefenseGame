@@ -16,4 +16,12 @@ public class ProjectileScript : MonoBehaviour
     {
         projectileRB.velocity = transform.forward * 50;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("LevelGeometry"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
