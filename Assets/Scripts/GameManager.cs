@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public bool isShipDamaged;
     public float oxygenDrain = 1.0f;
-
+    public TextMeshProUGUI gameOverText;
     public int cooldown = 10;
     public int breakStateMin = 1;
     public int breakStateMax = 7;
@@ -114,6 +114,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
+        gameOverText.gameObject.SetActive(true);
+        healthText.gameObject.SetActive(false);
+        oxygenText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
     }
 
     IEnumerator Timer()
