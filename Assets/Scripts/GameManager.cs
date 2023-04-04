@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         health = 100;
-        healthText.text = "Health: " + health + "%";
+        healthText.text = health + "%";
         oxygen = 100.0f;
-        oxygenText.text = "O2: " + oxygen + "%";
+        oxygenText.text = oxygen.ToString() + "%";
         secondsToEnd = timeOfRound;
         isGamePaused = false;
         ShipStatus();
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         {
 
             oxygen -= oxygenDrain * Time.deltaTime;
-            oxygenText.text = "O2: " + oxygen + "%";
+            oxygenText.text = oxygen.ToString() + "%";
 
 
             if (oxygen == 0)
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth(int healthToChange)
     {
         health += healthToChange;
-        healthText.text = "Health:" + health + "%";
+        healthText.text = health + "%";
         if (health == 0)
         {
             GameOver();

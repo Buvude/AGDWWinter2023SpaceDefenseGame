@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 2705912589304763005}
   - component: {fileID: 5801280828915794308}
   - component: {fileID: 1536590052835223394}
+  - component: {fileID: 2066949920354299204}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ae542fed535e24d87f36dc15818654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  camera: {fileID: 1398409979091171449}
   xRotation: 0
   yRotation: 0
 --- !u!114 &5801280828915794308
@@ -223,6 +224,20 @@ MonoBehaviour:
   turret: {fileID: 8945723575108133741, guid: b802c8afb6bfda44ea9cc5c3186b382d, type: 3}
   mine: {fileID: 2997447770810061079, guid: 5e7ddbb1b9082cf45ba19c52f1d70a06, type: 3}
   scrap: 0
+--- !u!114 &2066949920354299204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215963434230160607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7519be6f6a7514fb48f7c30f807edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1398409979091171449}
+  range: 10
 --- !u!1 &1398409979091171455
 GameObject:
   m_ObjectHideFlags: 0
