@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int breakState;
     public float checkBetween = 5.0f;
     public float repeatRate = 1.0f;
+    public TextMeshProUGUI startScreen;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
         oxygen = 100.0f;
         oxygenText.text = "O2: " + oxygen + "%";
         secondsToEnd = timeOfRound;
-        StartCoroutine(Timer());
         isGamePaused = false;
         ShipStatus();
     }
@@ -43,7 +43,11 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-
+        startScreen.gameObject.SetActive(false);
+        healthText.gameObject.SetActive(true);
+        oxygenText.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
+        StartCoroutine(Timer());
     }
 
     void OxygenDrain()
