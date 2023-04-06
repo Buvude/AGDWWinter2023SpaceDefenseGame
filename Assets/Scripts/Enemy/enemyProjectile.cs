@@ -7,7 +7,6 @@ public class enemyProjectile : MonoBehaviour
     public NMA Parent;
     public float speed;
     private Vector3 targetSpace;
-    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +32,6 @@ public class enemyProjectile : MonoBehaviour
                 break;
         }
         //print("Trigger entered");
-        if (gameObject.CompareTag("Player"))
-        {
-            gameManager.UpdateHealth(-10);
-        }
     }
 
     
