@@ -19,14 +19,14 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public bool isShipDamaged;
     public float oxygenDrain = 1.0f;
-    public TextMeshProUGUI gameOverText;
+    //public TextMeshProUGUI gameOverText;
     public int cooldown = 10;
     public int breakStateMin = 1;
     public int breakStateMax = 7;
     public int breakState;
     public float checkBetween = 5.0f;
     public float repeatRate = 1.0f;
-    public TextMeshProUGUI startScreen;
+    //public TextMeshProUGUI startScreen;
 
     // Start is called before the first frame update
     void Awake()
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGameActive = true;
-        startScreen.gameObject.SetActive(false);
+        //startScreen.gameObject.SetActive(false);
         healthText.gameObject.SetActive(true);
         oxygenText.gameObject.SetActive(true);
         timerText.gameObject.SetActive(true);
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)||Input.GetKeyDown(KeyCode.P))
         {
             PauseGame();
         }
@@ -100,14 +100,14 @@ public class GameManager : MonoBehaviour
     void PauseGame()
     {
         // can't pause in title and game over screen
-        if (Input.GetKeyDown(KeyCode.Escape) && !pauseScreen.activeInHierarchy && isGameActive)
+        if (/*Input.GetKeyDown(KeyCode.Escape) &&*/ !pauseScreen.activeInHierarchy /*&& isGameActive*/)
         {
             pauseScreen.SetActive(true);
             Time.timeScale = 0;
             isGamePaused = true;
             Debug.Log("Game is paused.");
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeInHierarchy)
+        else if (/*Input.GetKeyDown(KeyCode.Escape) &&*/ pauseScreen.activeInHierarchy)
         {
             pauseScreen.SetActive(false);
             Time.timeScale = 1;
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
-        gameOverText.gameObject.SetActive(true);
+        //gameOverText.gameObject.SetActive(true);
         healthText.gameObject.SetActive(false);
         oxygenText.gameObject.SetActive(false);
         timerText.gameObject.SetActive(false);
