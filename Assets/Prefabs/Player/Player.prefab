@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7628495770791235227}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2705912589304763005}
   - component: {fileID: 5801280828915794308}
   - component: {fileID: 1536590052835223394}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 1398409979091171450}
   - component: {fileID: 1398409979091171449}
   - component: {fileID: 1398409979091171448}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906677110244789149}
   - component: {fileID: 6992412469463613048}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Projectile Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4530235618062639002}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Cam Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
