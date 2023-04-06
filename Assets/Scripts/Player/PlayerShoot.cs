@@ -10,11 +10,6 @@ public class PlayerShoot : MonoBehaviour
 
     public Camera playerCamera;
 
-    public GameObject projectile;
-    private Vector3 randomRotation;
-
-    public bool canShoot = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,26 +19,26 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canShoot)
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
-            canShoot = false;
         }
     }
 
     void Shoot()
     {
-        for (int i = 0; i < 8; i++)
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, Mathf.Infinity))
         {
-            randomRotation = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), Random.Range(-5, 5));
-            Instantiate(projectile, transform.position, playerCamera.transform.rotation * Quaternion.Euler(randomRotation));
+            Debug.Log(hit.transform.name);
+            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward, Color.red);
+            
+            Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.Die();
+                enemy = null;
+            }
         }
-        StartCoroutine(Cooldown());
-    }
-
-    IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(0.5f);
-        canShoot = true;
     }
 }

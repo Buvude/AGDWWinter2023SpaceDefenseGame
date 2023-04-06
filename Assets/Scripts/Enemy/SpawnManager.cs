@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     private int maxNumOfEnemies;
     public GameObject[] spawnPoints;
     private int numOfEnemiesLeft;
-    private int numOfEnemies = 5;//might need to make this public
+    private int numOfEnemies = 5;
     public GameObject enemy;
     private Vector3 whereToSpawn;
     public int enemyCount;
@@ -19,9 +19,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       /* whereToSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
-        SpawnEnemyWave(numOfEnemies + waveNumber);*/
-        StartCoroutine(SpawnNewEnemy());
+        whereToSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+        SpawnEnemyWave(numOfEnemies + waveNumber);
     }
     //This will probably need to change to specific spawn points once we have the map implimented, but good start
     private Vector3 GenerateSpawnPosition()
@@ -35,23 +34,18 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(SpawnNewEnemy());
     }
 
     IEnumerator SpawnNewEnemy()
     {
-        while (true)
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        if (enemyCount == 0 && gameManager.isGameActive)
         {
-            enemyCount = FindObjectsOfType<Enemy>().Length;
-            if (enemyCount == 0||gameManager.getSecondsLeft()<=0 && gameManager.isGameActive)
-            {
-                waveNumber++;
-                SpawnEnemyWave(numOfEnemies + waveNumber);
-                gameManager.resetRountTimer();
-            }
-            yield return new WaitForSeconds(5);
+            waveNumber++;
+            SpawnEnemyWave(numOfEnemies + waveNumber);
         }
-        
+        yield return new WaitForSeconds(5);
     }
 
     void SpawnEnemyWave(int enemiesToSpawn)
