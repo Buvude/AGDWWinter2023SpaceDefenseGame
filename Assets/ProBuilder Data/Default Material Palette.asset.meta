@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Noah's Scene.meta
 guid: 99e16150a6c752b4ca3bf1bfb9e35a53
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+========
+guid: 729d8275c8e9d834a943294148c4860f
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
+>>>>>>>> main:Assets/ProBuilder Data/Default Material Palette.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
