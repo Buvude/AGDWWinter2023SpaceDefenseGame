@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int health;
     public TextMeshProUGUI healthText;
-    public int oxygen;
+    public float oxygen;
     public TextMeshProUGUI oxygenText;
     public bool isRoundActive = true;
     public TextMeshProUGUI timerText;
@@ -18,47 +18,60 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
     public bool isGameActive;
     public bool isShipDamaged;
-    public int oxygenDrain = 1;
-
+    public float oxygenDrain = 1.0f;
+    public TextMeshProUGUI gameOverText;
     public int cooldown = 10;
     public int breakStateMin = 1;
     public int breakStateMax = 7;
     public int breakState;
     public float checkBetween = 5.0f;
     public float repeatRate = 1.0f;
-    
+    public TextMeshProUGUI startScreen;
+
     // Start is called before the first frame update
     void Awake()
     {
         health = 100;
         healthText.text = "Health: " + health + "%";
-        oxygen = 100;
+        oxygen = 100.0f;
         oxygenText.text = "O2: " + oxygen + "%";
         secondsToEnd = timeOfRound;
-        StartCoroutine(Timer());
         isGamePaused = false;
         ShipStatus();
     }
 
+    public void resetRountTimer()
+    {
+        secondsToEnd = 60;
+    }
+    public int getSecondsLeft()
+    {
+        return secondsToEnd;
+    }
     public void StartGame()
     {
         isGameActive = true;
-        
+        startScreen.gameObject.SetActive(false);
+        healthText.gameObject.SetActive(true);
+        oxygenText.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
+        StartCoroutine(Timer());
     }
 
     void OxygenDrain()
     {
         if (isGameActive)
         {
-            if (isShipDamaged)
-            {
-                oxygen -= oxygenDrain;
-                oxygenText.text = "O2: " + oxygen + "%";
-            }
+
+            oxygen -= oxygenDrain * Time.deltaTime;
+            oxygenText.text = "O2: " + oxygen + "%";
+
+
             if (oxygen == 0)
             {
                 GameOver();
             }
+
         }
     }
 
@@ -72,12 +85,15 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Escape is pressed.");
             PauseGame();
         }
         if (breakState == 6)
         {
             isShipDamaged = true;
+        }
+        if (isShipDamaged)
+        {
+            OxygenDrain();
         }
     }
 
@@ -106,15 +122,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         isGamePaused = false;
     }
-    
+
     public void GameOver()
     {
         isGameActive = false;
+        gameOverText.gameObject.SetActive(true);
+        healthText.gameObject.SetActive(false);
+        oxygenText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
     }
 
     IEnumerator Timer()
     {
-        if (!isGamePaused)
+        if (!isGamePaused && isGameActive)
         {
             while (isRoundActive)
             {
@@ -153,9 +173,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator BreakShip()
     {
-        print("Change Break State!!!");
         //for (int i = 0; i < breakState; i++)
-        while(!isShipDamaged)
+        while (!isShipDamaged)
         {
             breakState = Random.Range(breakStateMin, breakStateMax);
             yield return new WaitForSeconds(checkBetween);

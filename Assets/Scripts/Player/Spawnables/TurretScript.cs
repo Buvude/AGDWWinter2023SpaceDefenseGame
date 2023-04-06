@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool targeting;
+    public List<GameObject> enemiesInProx;
+    public float shortestDistance;
+    public float distance;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (targeting)
+        {
+            for (int i = 0; i < enemiesInProx.Count; i++)
+            {
+                distance = Vector3.Distance(enemiesInProx[i].transform.position, transform.position);
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    transform.LookAt(enemiesInProx[i].transform);
+                }
+            }
+        }
     }
 }
